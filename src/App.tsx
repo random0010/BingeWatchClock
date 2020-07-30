@@ -26,10 +26,10 @@ const App:FunctionComponent = () => {
   const setActiveSession = (id:number) => {
     if(id === 1){
       setTypeButton1("primary"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default");
-      setSelected(1);
+      setSelected(2);
     }else if(id === 2){
       setTypeButton1("default"); setTypeButton2("primary"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default");
-      setSelected(2);
+      setSelected(3);
     }else if(id === 3){
       setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("primary"); setTypeButton4("default"); setTypeButton5("default");
       setSelected(4);
