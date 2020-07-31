@@ -15,7 +15,7 @@ const ModalAbout: FunctionComponent<IModalAbout> = (props) => {
             props.setVisibility(true);
             setVisibility(true);
         }
-    })
+    }, [props])
     
     const handleCancel = () => {
         setVisibility(false);
