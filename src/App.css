@@ -43,17 +43,10 @@
   justify-content: center;
 }
 
-#container-informations{
-  opacity: 0;
-  transition: opacity 1s;
-}
-
 #container-table{
   display: flex;
   justify-content: center;
   margin-top: 1%;
-  opacity: 1;
-  transition: opacity 0.5s;
 }
 
 .series{

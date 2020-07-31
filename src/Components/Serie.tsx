@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Tag } from 'antd';
+import { Tag, Button } from 'antd';
 import { StarTwoTone } from '@ant-design/icons';
 
 interface ISerie {
@@ -8,6 +8,12 @@ interface ISerie {
   vote_average: number,
   poster_path: string,
   setTime: (time: number) => void
+  addToSideMenu: (data: INotificationData) => void
+}
+
+interface INotificationData {
+  title: string,
+  time: number
 }
 
 const Serie:FunctionComponent<ISerie> = (props) => {
@@ -21,7 +27,6 @@ const Serie:FunctionComponent<ISerie> = (props) => {
   }
 
   const getDatas = (id:number) => {
-    document.getElementById("container-informations")!.style.opacity = "1";
     let url = 'https://api.themoviedb.org/3/tv/'+id+'?api_key=cfe422613b250f702980a3bbf9e90716&language=fr';
     fetch (url)
       .then(response => response.json())
@@ -42,12 +47,26 @@ const Serie:FunctionComponent<ISerie> = (props) => {
       });
   }
 
+  const addToSideMenu = (id:number, title:string) => {
+    let url = 'https://api.themoviedb.org/3/tv/'+id+'?api_key=cfe422613b250f702980a3bbf9e90716&language=fr';
+    fetch (url)
+      .then(response => response.json())
+      .then(data => {
+        let runtime = data.episode_run_time[0];
+        let episode = data.number_of_episodes;
+        let time = Math.floor((runtime * episode)/60);
+        let INotificationData : INotificationData = {title,time};
+        props.addToSideMenu(INotificationData);  
+      })
+  }
+
   return (
     <div className="serie" onClick={() => getDatas(props.id)}>
       <figure className="figure">
         <img src={defineImagePath(props.poster_path)} className="poster" id={"serie-"+props.id.toString()} alt="img" />
         <h2 className="name">{props.name}</h2>
         <Tag color="geekblue" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>{props.vote_average/2}&nbsp;<StarTwoTone/></Tag>
+        <br/><br/><Button type="primary" onClick={() => addToSideMenu(props.id, props.name)}><i className="fas fa-calculator"></i>&nbsp; Ajouter</Button>
       </figure>
     </div>
   );

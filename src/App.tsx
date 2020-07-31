@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import './App.css';
 import { Button, Tag } from 'antd';
 import Navbar from './Components/Navbar';
+import SideMenu from './Components/SideMenu';
 import SerieBrowser from './Components/SerieBrowser';
 
 declare const ButtonTypes: ["default", "primary", "ghost", "dashed", "link"];
@@ -12,6 +13,7 @@ const App:FunctionComponent = () => {
   const [session, setSession] = useState(0);
   const [selected, setSelected] = useState(2);
   const [time, setTime] = useState(0);
+  const [menuVisibility, setMenuVisibility] = useState(false);
   const [typeButton1, setTypeButton1] = useState("primary");
   const [typeButton2, setTypeButton2] = useState("default");
   const [typeButton3, setTypeButton3] = useState("default");
@@ -44,11 +46,12 @@ const App:FunctionComponent = () => {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar setMenuVisibility={setMenuVisibility} />
+      <SideMenu visibility={menuVisibility} setMenuVisibility={setMenuVisibility} />
       <br/>
       <p>Cliquer sur une série pour afficher le temps de visionnage.</p>
       <SerieBrowser setTime={setTime} />
-      <div id="container-informations">
+      <div id="container-information">
         <p>Diviser le temps en sessions</p>
         <div className="buttons-group">
           <Button type={typeButton1 as ButtonType} size="large" onClick={() => setActiveSession(1)}>2h</Button>&nbsp;&nbsp;
@@ -69,4 +72,12 @@ const App:FunctionComponent = () => {
 }
 export default App;
 
-//@todo responsive, vérifier le calcul(pas possible), plus le temps en jour min
+//@todo responsive, plus le temps en jour min, bug fix on gto for example
+// img en plus petit avec plus de résultat/ patcher le NaN
+// notif à la first add, a propos button calculate logo app, animation
+// app mobile / credit tmdb a propos
+// fr-en
+// déslectionner une série
+// animation
+// about / no cookie no data collected / 
+// image not found anglais, icon anglais
