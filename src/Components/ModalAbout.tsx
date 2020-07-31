@@ -29,6 +29,7 @@ const ModalAbout: FunctionComponent<IModalAbout> = (props) => {
             onCancel={handleCancel}
             footer={<Button onClick={() => handleCancel()}>Fermer</Button>}
             >
+            <p>cc</p>
         </Modal>
     );
 };
