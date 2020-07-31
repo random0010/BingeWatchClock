@@ -21,7 +21,7 @@ const Series:FunctionComponent<ISeries> = (props) => {
     setTitleNotification(data.title);
     seriesSideMenu.push(data.title);
 
-    if(seriesSideMenu.length == 1){
+    if(seriesSideMenu.length === 1){
       setNotificationAddVisibility(true);
     }else{
       setNotificationAddVisibility(false);
