@@ -82,7 +82,7 @@ const App:FunctionComponent = () => {
       <Navbar setMenuVisibility={setMenuVisibility} />
       <SideMenu visibility={menuVisibility} setMenuVisibility={setMenuVisibility} />
       <br/>
-      <p>Cliquer sur une série pour afficher le temps de visionnage.</p>
+      <p>Cliquer sur une série pour commencer.</p>
       <SerieBrowser setTime={setTime} />
       <div id="container-information">
         <p>Diviser le temps en sessions</p>
@@ -97,8 +97,8 @@ const App:FunctionComponent = () => {
         <br/>
         <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
         <div className="tags-group">
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px"}}>{convertToDayHourMin()}</Tag>
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px"}}>{timeInformation()}</Tag>
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()}</Tag>
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{timeInformation()}</Tag>
         </div>
       </div>
     </div>
