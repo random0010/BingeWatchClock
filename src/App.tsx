@@ -95,10 +95,10 @@ const App:FunctionComponent = () => {
           <Button type={typeButton6 as ButtonType} onClick={() => setActiveSession(6)}>12h</Button>&nbsp;&nbsp;
         </div>
         <br/>
+        <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
         <div className="tags-group">
-          <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{convertToDayHourMin()}</Tag>
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{timeInformation()}</Tag>
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px"}}>{convertToDayHourMin()}</Tag>
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px"}}>{timeInformation()}</Tag>
         </div>
       </div>
     </div>

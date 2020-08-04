@@ -51,8 +51,9 @@
   display: flex;
   justify-content: center;
   margin-top: 1%;
-  height: 245px;
+  max-height: 490px;
   overflow-y: scroll;
+  flex-wrap: wrap;
 }
 
 table{
