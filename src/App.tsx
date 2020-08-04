@@ -100,7 +100,6 @@ const App:FunctionComponent = () => {
           <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{timeInformation()}</Tag>
           <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
         </div>
-        <br/><br/>
       </div>
     </div>
   );
