@@ -66,7 +66,7 @@ const Serie:FunctionComponent<ISerie> = (props) => {
       <figure className="figure">
         <img src={defineImagePath(props.poster_path)} className="poster" id={"serie-"+props.id.toString()} alt="img" />
         <h5 className="name">{props.name}</h5>
-        <Tag color="geekblue" style={{padding:"2px px 4px 2px", marginTop:"2px"}}>{(props.vote_average/2).toFixed(1)}&nbsp;<StarTwoTone/></Tag>
+        {/*<Tag color="geekblue" style={{padding:"2px px 4px 2px", marginTop:"2px"}}>{(props.vote_average/2).toFixed(1)}&nbsp;<StarTwoTone/></Tag>*/}
         {/*<br/><br/><Button type="primary" onClick={() => addToSideMenu(props.id, props.name)}><i className="fas fa-calculator"></i>&nbsp; Ajouter</Button>*/}
       </figure>
     </div>
