@@ -96,9 +96,9 @@ const App:FunctionComponent = () => {
         </div>
         <br/>
         <div className="tags-group">
-          <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{convertToDayHourMin()}</Tag>
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{timeInformation()}</Tag>
           <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{convertToDayHourMin()}</Tag>
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{timeInformation()}</Tag>
         </div>
       </div>
     </div>
