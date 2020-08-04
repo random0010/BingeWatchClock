@@ -50,7 +50,7 @@ const App:FunctionComponent = () => {
 
   const timeInformation = () => {
     if(isNaN(time)){
-      return "informations manquantes"
+      return "Informations manquantes"
     }else{
       return time + "h";
     }
@@ -65,12 +65,16 @@ const App:FunctionComponent = () => {
   }
 
   const convertToDayHourMin = () => {
-    let num = time * 60;
-    let d = Math.floor(num/1440);
-    let h = Math.floor((num-(d*1440))/60);
-    let m = Math.round(num%60);
-  
-    return(d + " jour(s), " + h + " heure(s), "+m+" minute(s)");
+    if(!isNaN(time)){
+      let num = time * 60;
+      let d = Math.floor(num/1440);
+      let h = Math.floor((num-(d*1440))/60);
+      let m = Math.round(num%60);
+    
+      return(d + " jour(s), " + h + " heure(s), "+m+" minute(s)");
+    }else{
+      return "Informations manquantes"
+    }
   }
 
   return (
@@ -83,18 +87,18 @@ const App:FunctionComponent = () => {
       <div id="container-information">
         <p>Diviser le temps en sessions</p>
         <div className="buttons-group">
-          <Button type={typeButton1 as ButtonType} size="large" onClick={() => setActiveSession(1)}>2h</Button>&nbsp;&nbsp;
-          <Button type={typeButton2 as ButtonType} size="large" onClick={() => setActiveSession(2)}>3h</Button>&nbsp;&nbsp;
-          <Button type={typeButton3 as ButtonType} size="large" onClick={() => setActiveSession(3)}>4h</Button>&nbsp;&nbsp;
-          <Button type={typeButton4 as ButtonType} size="large" onClick={() => setActiveSession(4)}>6h</Button>&nbsp;&nbsp;
-          <Button type={typeButton5 as ButtonType} size="large" onClick={() => setActiveSession(5)}>8h</Button>&nbsp;&nbsp;
-          <Button type={typeButton6 as ButtonType} size="large" onClick={() => setActiveSession(6)}>12h</Button>&nbsp;&nbsp;
+          <Button type={typeButton1 as ButtonType} onClick={() => setActiveSession(1)}>2h</Button>&nbsp;&nbsp;
+          <Button type={typeButton2 as ButtonType} onClick={() => setActiveSession(2)}>3h</Button>&nbsp;&nbsp;
+          <Button type={typeButton3 as ButtonType} onClick={() => setActiveSession(3)}>4h</Button>&nbsp;&nbsp;
+          <Button type={typeButton4 as ButtonType} onClick={() => setActiveSession(4)}>6h</Button>&nbsp;&nbsp;
+          <Button type={typeButton5 as ButtonType} onClick={() => setActiveSession(5)}>8h</Button>&nbsp;&nbsp;
+          <Button type={typeButton6 as ButtonType} onClick={() => setActiveSession(6)}>12h</Button>&nbsp;&nbsp;
         </div>
         <br/>
         <div className="tags-group">
-          <Tag color="#108ee9" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>{convertToDayHourMin()}</Tag>
-          <Tag color="geekblue" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>Temps de visionnage : {timeInformation()}</Tag>
-          <Tag color="#108ee9" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>{sessionInformation()} session(s) de {selected}h</Tag>
+          <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{convertToDayHourMin()}</Tag>
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{timeInformation()}</Tag>
+          <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px", marginTop:"5px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
         </div>
         <br/><br/>
       </div>

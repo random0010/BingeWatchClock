@@ -28,10 +28,10 @@ const Series:FunctionComponent<ISeries> = (props) => {
     }
   }
 
-  // Slice 5 car on ne peut pas limiter le nombre de résultat de l'API
+  // Slice 8 car on ne peut pas limiter le nombre de résultat de l'API
   return (
     <td className="series">
-      {props.series.slice(0,5).map((serie:any) => (
+      {props.series.slice(0,8).map((serie:any) => (
         <Serie {...serie} setTime={props.setTime} key={serie.id} addToSideMenu={addToSideMenu} />
       ))}
       <NotificationAdd visibility={notificationAddVisibility} setNotificationAddVisibility={setNotificationAddVisibility} title={titleNotification} />
