@@ -39,7 +39,7 @@ const Serie:FunctionComponent<ISerie> = (props) => {
         for(let i = 0; i < movie.length; i++){
           if(movie[i].id === dynamicId){
             document.getElementById(dynamicId)!.style.outline = "solid 5px #1890FF";
-            props.setTime(Math.floor((runtime * episode)/60));
+            props.setTime(parseFloat(((runtime * episode)/60).toFixed(2)));
           }else{
             movie[i].style.outline = "solid 0px black";
           }
@@ -52,9 +52,10 @@ const Serie:FunctionComponent<ISerie> = (props) => {
     fetch (url)
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         let runtime = data.episode_run_time[0];
         let episode = data.number_of_episodes;
-        let time = Math.floor((runtime * episode)/60);
+        let time = (runtime * episode)/60;
         let INotificationData : INotificationData = {title,time};
         props.addToSideMenu(INotificationData);  
       })
@@ -65,8 +66,8 @@ const Serie:FunctionComponent<ISerie> = (props) => {
       <figure className="figure">
         <img src={defineImagePath(props.poster_path)} className="poster" id={"serie-"+props.id.toString()} alt="img" />
         <h2 className="name">{props.name}</h2>
-        <Tag color="geekblue" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>{props.vote_average/2}&nbsp;<StarTwoTone/></Tag>
-        <br/><br/><Button type="primary" onClick={() => addToSideMenu(props.id, props.name)}><i className="fas fa-calculator"></i>&nbsp; Ajouter</Button>
+        <Tag color="geekblue" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>{(props.vote_average/2).toFixed(1)}&nbsp;<StarTwoTone/></Tag>
+        {/*<br/><br/><Button type="primary" onClick={() => addToSideMenu(props.id, props.name)}><i className="fas fa-calculator"></i>&nbsp; Ajouter</Button>*/}
       </figure>
     </div>
   );

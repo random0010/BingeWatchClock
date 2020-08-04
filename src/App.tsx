@@ -19,29 +19,58 @@ const App:FunctionComponent = () => {
   const [typeButton3, setTypeButton3] = useState("default");
   const [typeButton4, setTypeButton4] = useState("default");
   const [typeButton5, setTypeButton5] = useState("default");
+  const [typeButton6, setTypeButton6] = useState("default");
 
   useEffect(() => {
-    let session = (time/selected);
-    setSession(Math.floor(session));
+    let session = parseFloat((time/selected).toFixed(2));
+    setSession(session);
   }, [session,time,selected,setSession]);
 
   const setActiveSession = (id:number) => {
     if(id === 1){
-      setTypeButton1("primary"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default");
+      setTypeButton1("primary"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default"); setTypeButton6("default")
       setSelected(2);
     }else if(id === 2){
-      setTypeButton1("default"); setTypeButton2("primary"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default");
+      setTypeButton1("default"); setTypeButton2("primary"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default"); setTypeButton6("default")
       setSelected(3);
     }else if(id === 3){
-      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("primary"); setTypeButton4("default"); setTypeButton5("default");
+      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("primary"); setTypeButton4("default"); setTypeButton5("default"); setTypeButton6("default")
       setSelected(4);
     }else if(id === 4){
-      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("primary"); setTypeButton5("default");
-      setSelected(8);
+      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("primary"); setTypeButton5("default"); setTypeButton6("default")
+      setSelected(6);
     }else if(id === 5){
-      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("primary");
+      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("primary"); setTypeButton6("default")
+      setSelected(8);
+    }else if(id === 6){
+      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default"); setTypeButton6("primary")
       setSelected(12);
     }
+  }
+
+  const timeInformation = () => {
+    if(isNaN(time)){
+      return "informations manquantes"
+    }else{
+      return time + "h";
+    }
+  }
+
+  const sessionInformation = () => {
+    if(isNaN(time)){
+      return "X"
+    }else{
+      return session;
+    }
+  }
+
+  const convertToDayHourMin = () => {
+    let num = time * 60;
+    let d = Math.floor(num/1440);
+    let h = Math.floor((num-(d*1440))/60);
+    let m = Math.round(num%60);
+  
+    return(d + " jour(s), " + h + " heure(s), "+m+" minute(s)");
   }
 
   return (
@@ -57,13 +86,15 @@ const App:FunctionComponent = () => {
           <Button type={typeButton1 as ButtonType} size="large" onClick={() => setActiveSession(1)}>2h</Button>&nbsp;&nbsp;
           <Button type={typeButton2 as ButtonType} size="large" onClick={() => setActiveSession(2)}>3h</Button>&nbsp;&nbsp;
           <Button type={typeButton3 as ButtonType} size="large" onClick={() => setActiveSession(3)}>4h</Button>&nbsp;&nbsp;
-          <Button type={typeButton4 as ButtonType} size="large" onClick={() => setActiveSession(4)}>8h</Button>&nbsp;&nbsp;
-          <Button type={typeButton5 as ButtonType} size="large" onClick={() => setActiveSession(5)}>12h</Button>&nbsp;&nbsp;
+          <Button type={typeButton4 as ButtonType} size="large" onClick={() => setActiveSession(4)}>6h</Button>&nbsp;&nbsp;
+          <Button type={typeButton5 as ButtonType} size="large" onClick={() => setActiveSession(5)}>8h</Button>&nbsp;&nbsp;
+          <Button type={typeButton6 as ButtonType} size="large" onClick={() => setActiveSession(6)}>12h</Button>&nbsp;&nbsp;
         </div>
         <br/>
         <div className="tags-group">
-          <Tag color="#108ee9" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>Temps de visionnage : {time}h</Tag>
-          <Tag color="geekblue" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>{session} sessions de {selected}h</Tag>
+          <Tag color="#108ee9" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>{convertToDayHourMin()}</Tag>
+          <Tag color="geekblue" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>Temps de visionnage : {timeInformation()}</Tag>
+          <Tag color="#108ee9" style={{fontSize:"150%", padding:"1% 1% 1% 1%", marginTop:"1%"}}>{sessionInformation()} session(s) de {selected}h</Tag>
         </div>
         <br/><br/>
       </div>
@@ -72,9 +103,9 @@ const App:FunctionComponent = () => {
 }
 export default App;
 
-//@todo responsive, plus le temps en jour min, bug fix on gto for example
-// img en plus petit avec plus de résultat/ patcher le NaN
-// notif à la first add, a propos button calculate logo app, animation
+//@todo responsive
+// img en plus petit
+// a propos button calculate logo app, animation
 // app mobile / credit tmdb a propos
 // fr-en
 // déslectionner une série
