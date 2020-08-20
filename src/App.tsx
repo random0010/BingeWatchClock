@@ -91,7 +91,7 @@ const App:FunctionComponent = () => {
       <p>Cliquer sur une série pour commencer...</p>
       <SerieBrowser setTime={setTime} setSeasonNumber={setSeasonNumber} setEpisodeNumber={setEpisodeNumber} setRunTime={setRunTime} setStatus={setStatus}/>
       
-      <Tabs defaultActiveKey="1" type="card">
+      <Tabs defaultActiveKey="1">
         <TabPane tab="Temps de visionnage" key="1">
           <div className="container-information">
             <p>Diviser le temps en sessions</p>
