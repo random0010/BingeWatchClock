@@ -1,7 +1,7 @@
 import React, { useState, FunctionComponent, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import './App.css';
-import { Button, Tag, Tabs } from 'antd';
+import { Button, Tag, Tabs, Timeline } from 'antd';
 import Navbar from './Components/Navbar';
 import SideMenu from './Components/SideMenu';
 import SerieBrowser from './Components/SerieBrowser';
@@ -107,17 +107,21 @@ const App:FunctionComponent = () => {
             <br/>
             <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
             <div className="tags-group">
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()} soit {timeInformation()}</Tag>
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()}</Tag>
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{timeInformation()}</Tag>
             </div>
           </div>
         </TabPane>
         <TabPane tab="Informations" key="2">
-          <div className="container-information">
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>Note : 3.2 <StarTwoTone /></Tag>
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>Statut : {status}</Tag><br/>
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{episodeNumber} épisode(s) de {runTime} minutes ({seasonNumber} saison(s))</Tag><br/>
-              <Button style={{marginTop:"10px", marginBottom:"5px"}}>Description et acteurs</Button>
+          <div className="container-timeline">
+            <Timeline>
+              <Timeline.Item>Note : 0.0 <StarTwoTone /></Timeline.Item>
+              <Timeline.Item>Statut : {status}</Timeline.Item>
+              <Timeline.Item>{episodeNumber} épisode(s) de {runTime} minutes ({seasonNumber} saison(s))</Timeline.Item>
+              <Timeline.Item>Genre : fdsfsfsdf, fsd fsdf sdfs, dff sdfsdfsd</Timeline.Item>
+            </Timeline>
           </div>
+          <div style={{marginTop: "-30px"}}><Button>Description</Button></div>
         </TabPane>
       </Tabs>
     </div>

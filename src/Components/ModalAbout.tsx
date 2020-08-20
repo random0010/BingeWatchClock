@@ -27,7 +27,7 @@ const ModalAbout: FunctionComponent<IModalAbout> = (props) => {
             title="À propos"
             visible={visibility}
             onCancel={handleCancel}
-            footer={<><Button>Contacter le développeur</Button><Button onClick={() => handleCancel()}>Fermer</Button></>}
+            footer={<Button onClick={() => handleCancel()}>Fermer</Button>}
             >
             <div className="container-about">
                 <p className="app-name"><i className="fas fa-stopwatch"></i>&nbsp;&nbsp;<b>BingeWatchClock</b></p>

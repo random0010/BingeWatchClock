@@ -36,7 +36,7 @@ const Serie:FunctionComponent<ISerie> = (props) => {
 
   const setStatus = (status:string) => {
     let text = "";
-    if(status == "Returning Series"){text = "en cours..."}
+    if(status == "Returning Series"){text = "en cours"}
     else{text="terminée"}
     props.setStatus(text);
   }
@@ -52,6 +52,7 @@ const Serie:FunctionComponent<ISerie> = (props) => {
         let movie = document.getElementsByClassName("poster") as HTMLCollectionOf<HTMLElement>;
         for(let i = 0; i < movie.length; i++){
           if(movie[i].id === dynamicId){
+            console.log(data);
             document.getElementById(dynamicId)!.style.boxShadow = "0 0 1pt 2pt #1890FF";
             props.setTime(parseFloat(((runtime * episode)/60).toFixed(2)));
             props.setSeasonNumber(data.number_of_seasons);

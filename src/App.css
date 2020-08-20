@@ -127,3 +127,9 @@ img{
   text-align: center;
   font-size: 75%;
 }
+
+.container-timeline{
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 10px;
+}
