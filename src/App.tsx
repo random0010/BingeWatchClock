@@ -1,13 +1,15 @@
 import React, { useState, FunctionComponent, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import './App.css';
-import { Button, Tag } from 'antd';
+import { Button, Tag, Tabs } from 'antd';
 import Navbar from './Components/Navbar';
 import SideMenu from './Components/SideMenu';
 import SerieBrowser from './Components/SerieBrowser';
 
 declare const ButtonTypes: ["default", "primary", "ghost", "dashed", "link"];
 export declare type ButtonType = typeof ButtonTypes[number];
+
+const { TabPane } = Tabs;
 
 const App:FunctionComponent = () => {
   const [session, setSession] = useState(0);
@@ -88,28 +90,36 @@ const App:FunctionComponent = () => {
       <br/>
       <p>Cliquer sur une série pour commencer...</p>
       <SerieBrowser setTime={setTime} setSeasonNumber={setSeasonNumber} setEpisodeNumber={setEpisodeNumber} setRunTime={setRunTime} setStatus={setStatus}/>
-      <div id="container-information">
-        <p>Diviser le temps en sessions</p>
-        <div className="buttons-group">
-          <Button type={typeButton1 as ButtonType} onClick={() => setActiveSession(1)}>2h</Button>&nbsp;&nbsp;
-          <Button type={typeButton2 as ButtonType} onClick={() => setActiveSession(2)}>3h</Button>&nbsp;&nbsp;
-          <Button type={typeButton3 as ButtonType} onClick={() => setActiveSession(3)}>4h</Button>&nbsp;&nbsp;
-          <Button type={typeButton4 as ButtonType} onClick={() => setActiveSession(4)}>6h</Button>&nbsp;&nbsp;
-          <Button type={typeButton5 as ButtonType} onClick={() => setActiveSession(5)}>8h</Button>&nbsp;&nbsp;
-          <Button type={typeButton6 as ButtonType} onClick={() => setActiveSession(6)}>12h</Button>&nbsp;&nbsp;
-        </div>
-        <br/>
-        <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
-        <div className="tags-group">
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()}</Tag>
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{timeInformation()}</Tag>
-        </div>
-        <div className="tags-group">
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{seasonNumber} saison(s)</Tag>
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{episodeNumber} épisode(s) de {runTime} minutes</Tag>
-          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>Statut : {status}</Tag>
-        </div>
-      </div>
+      
+      <Tabs defaultActiveKey="1" type="card">
+        <TabPane tab="Temps de visionnage" key="1">
+          <div className="container-information">
+            <p>Diviser le temps en sessions</p>
+            <div className="buttons-group">
+              <Button type={typeButton1 as ButtonType} onClick={() => setActiveSession(1)}>2h</Button>&nbsp;&nbsp;
+              <Button type={typeButton2 as ButtonType} onClick={() => setActiveSession(2)}>3h</Button>&nbsp;&nbsp;
+              <Button type={typeButton3 as ButtonType} onClick={() => setActiveSession(3)}>4h</Button>&nbsp;&nbsp;
+              <Button type={typeButton4 as ButtonType} onClick={() => setActiveSession(4)}>6h</Button>&nbsp;&nbsp;
+              <Button type={typeButton5 as ButtonType} onClick={() => setActiveSession(5)}>8h</Button>&nbsp;&nbsp;
+              <Button type={typeButton6 as ButtonType} onClick={() => setActiveSession(6)}>12h</Button>&nbsp;&nbsp;
+            </div>
+            <br/>
+            <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
+            <div className="tags-group">
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()}</Tag>
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{timeInformation()}</Tag>
+            </div>
+          </div>
+        </TabPane>
+        <TabPane tab="Informations" key="2">
+          <div className="container-information">
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>Statut : {status}</Tag><br/>
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{seasonNumber} saison(s)</Tag><br/>
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{episodeNumber} épisode(s) de {runTime} minutes</Tag>
+          </div>
+        </TabPane>
+
+      </Tabs>
     </div>
   );
 }
