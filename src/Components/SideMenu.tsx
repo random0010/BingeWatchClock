@@ -46,8 +46,9 @@ const SideMenu: FunctionComponent<ISideMenu> = (props) => {
         visible={visibility}
         key={"left"}
         onClose={closeMenu}
-        mask={false}
+        maskStyle={{opacity:0,animation:"none"}}
         footer={<><b>5 jour(s), 6 heure(s), 6 minute(s)</b></>}
+        maskClosable={true}
       >
         <>
           {/*data.map(function(data, index){

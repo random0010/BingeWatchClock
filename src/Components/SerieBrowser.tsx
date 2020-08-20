@@ -3,7 +3,11 @@ import SearchInput from './Search';
 import Series from './Series';
 
 interface ISerieBrowser {
-  setTime: (time: number) => void
+  setTime: (time: number) => void,
+  setSeasonNumber: (seasonNumber: number) => void,
+  setEpisodeNumber: (episodeNumber: number) => void,
+  setRunTime: (runTime: number) => void,
+  setStatus: (status: string) => void
 }
 
 const SerieBrowser: FunctionComponent<ISerieBrowser> = (props) => {
@@ -47,7 +51,7 @@ const SerieBrowser: FunctionComponent<ISerieBrowser> = (props) => {
         <table>
           <tbody>
             <tr>
-              <Series series={series.filter(isSearched(query))} setTime={props.setTime} />
+              <Series series={series.filter(isSearched(query))} setTime={props.setTime} setSeasonNumber={props.setSeasonNumber} setEpisodeNumber={props.setEpisodeNumber} setRunTime={props.setRunTime} setStatus={props.setStatus} />
             </tr>
           </tbody>
         </table>

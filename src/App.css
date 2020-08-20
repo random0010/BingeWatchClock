@@ -71,7 +71,7 @@ table{
 .serie{
   margin-left: 1%;
   margin-right: 1%;
-  margin-top: 15px;
+  margin-top: 10px;
   font-size: 90%;
   width: 30%;
   max-width: 80px;
@@ -98,4 +98,31 @@ img{
 
 .poster{
   border-radius: 3.5px !important;
+}
+
+.name{
+  margin-top: 2.5px;
+}
+
+.container-about{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.app-name{
+  text-align: center;
+  color: #1890FF;
+  font-size: 130%;
+  margin-top: -15px;
+}
+
+.copyright{
+  text-align: center;
+  font-size: 90%;
+  margin-bottom: -10px;
+}
+
+.data-storage{
+  text-align: center;
 }

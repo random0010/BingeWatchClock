@@ -7,7 +7,11 @@ interface ISerie {
   name: string,
   vote_average: number,
   poster_path: string,
-  setTime: (time: number) => void
+  setTime: (time: number) => void,
+  setSeasonNumber: (seasonNumber: number) => void,
+  setEpisodeNumber: (episodeNumber: number) => void,
+  setRunTime: (runTime: number) => void,
+  setStatus: (status: string) => void,
   addToSideMenu: (data: INotificationData) => void
 }
 
@@ -26,13 +30,23 @@ const Serie:FunctionComponent<ISerie> = (props) => {
     }
   }
 
+  const setRunTime = (runTime:number) => {
+    props.setRunTime(runTime);
+  }
+
+  const setStatus = (status:string) => {
+    let text = "";
+    if(status == "Returning Series"){text = "en cours..."}
+    else{text="terminée"}
+    props.setStatus(text);
+  }
+
   const getDatas = (id:number) => {
     let url = 'https://api.themoviedb.org/3/tv/'+id+'?api_key=cfe422613b250f702980a3bbf9e90716&language=fr';
     fetch (url)
       .then(response => response.json())
       .then(data => {
-        let runtime = data.episode_run_time[0];
-        //let season = data.number_of_seasons;
+        let runtime = data.episode_run_time;
         let episode = data.number_of_episodes;
         let dynamicId = 'serie-'+id;
         let movie = document.getElementsByClassName("poster") as HTMLCollectionOf<HTMLElement>;
@@ -40,6 +54,10 @@ const Serie:FunctionComponent<ISerie> = (props) => {
           if(movie[i].id === dynamicId){
             document.getElementById(dynamicId)!.style.boxShadow = "0 0 1pt 2pt #1890FF";
             props.setTime(parseFloat(((runtime * episode)/60).toFixed(2)));
+            props.setSeasonNumber(data.number_of_seasons);
+            props.setEpisodeNumber(data.number_of_episodes);
+            setStatus(data.status);
+            setRunTime(runtime);
           }else{
             movie[i].style.boxShadow = "0 0 5px";
           }

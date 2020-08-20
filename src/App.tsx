@@ -13,6 +13,10 @@ const App:FunctionComponent = () => {
   const [session, setSession] = useState(0);
   const [selected, setSelected] = useState(2);
   const [time, setTime] = useState(0);
+  const [seasonNumber, setSeasonNumber] = useState(0);
+  const [episodeNumber, setEpisodeNumber] = useState(0);
+  const [runTime, setRunTime] = useState(0);
+  const [status, setStatus] = useState("???");
   const [menuVisibility, setMenuVisibility] = useState(false);
   const [typeButton1, setTypeButton1] = useState("primary");
   const [typeButton2, setTypeButton2] = useState("default");
@@ -82,8 +86,8 @@ const App:FunctionComponent = () => {
       <Navbar setMenuVisibility={setMenuVisibility} />
       <SideMenu visibility={menuVisibility} setMenuVisibility={setMenuVisibility} />
       <br/>
-      <p>Cliquer sur une série pour commencer.</p>
-      <SerieBrowser setTime={setTime} />
+      <p>Cliquer sur une série pour commencer...</p>
+      <SerieBrowser setTime={setTime} setSeasonNumber={setSeasonNumber} setEpisodeNumber={setEpisodeNumber} setRunTime={setRunTime} setStatus={setStatus}/>
       <div id="container-information">
         <p>Diviser le temps en sessions</p>
         <div className="buttons-group">
@@ -100,18 +104,13 @@ const App:FunctionComponent = () => {
           <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()}</Tag>
           <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{timeInformation()}</Tag>
         </div>
+        <div className="tags-group">
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{seasonNumber} saison(s)</Tag>
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{episodeNumber} épisode(s) de {runTime} minutes</Tag>
+          <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>Statut : {status}</Tag>
+        </div>
       </div>
     </div>
   );
 }
 export default App;
-
-//@todo responsive
-// img en plus petit
-// a propos button calculate logo app, animation
-// app mobile / credit tmdb a propos
-// fr-en
-// déslectionner une série
-// animation
-// about / no cookie no data collected / 
-// image not found anglais, icon anglais

@@ -4,7 +4,11 @@ import NotificationAdd from './NotificationAdd';
 
 interface ISeries {
   series: [],
-  setTime: (time: number) => void
+  setTime: (time: number) => void,
+  setSeasonNumber: (seasonNumber: number) => void,
+  setEpisodeNumber: (episodeNumber: number) => void,
+  setRunTime: (runTime: number) => void,
+  setStatus: (status: string) => void
 }
 interface INotificationData {
   title: string,
@@ -32,7 +36,7 @@ const Series:FunctionComponent<ISeries> = (props) => {
   return (
     <td className="series">
       {props.series.slice(0,8).map((serie:any) => (
-        <Serie {...serie} setTime={props.setTime} key={serie.id} addToSideMenu={addToSideMenu} />
+        <Serie {...serie} setTime={props.setTime} setSeasonNumber={props.setSeasonNumber} setEpisodeNumber={props.setEpisodeNumber} setRunTime={props.setRunTime} setStatus={props.setStatus} key={serie.id} addToSideMenu={addToSideMenu} />
       ))}
       <NotificationAdd visibility={notificationAddVisibility} setNotificationAddVisibility={setNotificationAddVisibility} title={titleNotification} />
     </td>
