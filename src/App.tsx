@@ -120,6 +120,7 @@ const App:FunctionComponent = () => {
               <Timeline.Item>{episodeNumber} épisode(s) de {runTime} minutes ({seasonNumber} saison(s))</Timeline.Item>
             </Timeline>
           </div>
+          <div style={{marginTop: "-40px"}}><Button>Description</Button></div>
         </TabPane>
       </Tabs>
     </div>
