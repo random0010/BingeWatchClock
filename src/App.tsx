@@ -5,6 +5,7 @@ import { Button, Tag, Tabs } from 'antd';
 import Navbar from './Components/Navbar';
 import SideMenu from './Components/SideMenu';
 import SerieBrowser from './Components/SerieBrowser';
+import { StarTwoTone } from '@ant-design/icons';
 
 declare const ButtonTypes: ["default", "primary", "ghost", "dashed", "link"];
 export declare type ButtonType = typeof ButtonTypes[number];
@@ -91,7 +92,7 @@ const App:FunctionComponent = () => {
       <p>Cliquer sur une série pour commencer...</p>
       <SerieBrowser setTime={setTime} setSeasonNumber={setSeasonNumber} setEpisodeNumber={setEpisodeNumber} setRunTime={setRunTime} setStatus={setStatus}/>
       
-      <Tabs defaultActiveKey="1">
+      <Tabs defaultActiveKey="1" type="card">
         <TabPane tab="Temps de visionnage" key="1">
           <div className="container-information">
             <p>Diviser le temps en sessions</p>
@@ -106,19 +107,18 @@ const App:FunctionComponent = () => {
             <br/>
             <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
             <div className="tags-group">
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()}</Tag>
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{timeInformation()}</Tag>
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()} soit {timeInformation()}</Tag>
             </div>
           </div>
         </TabPane>
         <TabPane tab="Informations" key="2">
           <div className="container-information">
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>Note : 3.2 <StarTwoTone /></Tag>
               <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>Statut : {status}</Tag><br/>
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{seasonNumber} saison(s)</Tag><br/>
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{episodeNumber} épisode(s) de {runTime} minutes</Tag>
+              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{episodeNumber} épisode(s) de {runTime} minutes ({seasonNumber} saison(s))</Tag><br/>
+              <Button style={{marginTop:"10px", marginBottom:"5px"}}>Description et acteurs</Button>
           </div>
         </TabPane>
-
       </Tabs>
     </div>
   );
