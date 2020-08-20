@@ -118,10 +118,8 @@ const App:FunctionComponent = () => {
               <Timeline.Item>Note : 0.0 <StarTwoTone /></Timeline.Item>
               <Timeline.Item>Statut : {status}</Timeline.Item>
               <Timeline.Item>{episodeNumber} épisode(s) de {runTime} minutes ({seasonNumber} saison(s))</Timeline.Item>
-              <Timeline.Item>Genre : fdsfsfsdf, fsd fsdf sdfs, dff sdfsdfsd</Timeline.Item>
             </Timeline>
           </div>
-          <div style={{marginTop: "-30px"}}><Button>Description</Button></div>
         </TabPane>
       </Tabs>
     </div>
