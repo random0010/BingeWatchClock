@@ -100,10 +100,10 @@ const App:FunctionComponent = () => {
       }
     }
     else if(text === "runtime"){
-      if(episodeNumber > 1){
+      if(runTime > 1){
         textToReturn = runTime + " minutes par épisode";
       }else{
-        textToReturn = runTime + " minute par épisode";
+        textToReturn = "Information manquante sur la durée des épisodes.";
       }
     }
     return textToReturn;
