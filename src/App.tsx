@@ -5,7 +5,6 @@ import { Button, Tag, Tabs, Timeline } from 'antd';
 import Navbar from './Components/Navbar';
 import SideMenu from './Components/SideMenu';
 import SerieBrowser from './Components/SerieBrowser';
-import { StarTwoTone } from '@ant-design/icons';
 
 declare const ButtonTypes: ["default", "primary", "ghost", "dashed", "link"];
 export declare type ButtonType = typeof ButtonTypes[number];
@@ -19,14 +18,14 @@ const App:FunctionComponent = () => {
   const [seasonNumber, setSeasonNumber] = useState(0);
   const [episodeNumber, setEpisodeNumber] = useState(0);
   const [runTime, setRunTime] = useState(0);
-  const [status, setStatus] = useState("???");
+  const [status, setStatus] = useState("inconnu");
   const [menuVisibility, setMenuVisibility] = useState(false);
   const [typeButton1, setTypeButton1] = useState("primary");
   const [typeButton2, setTypeButton2] = useState("default");
   const [typeButton3, setTypeButton3] = useState("default");
   const [typeButton4, setTypeButton4] = useState("default");
   const [typeButton5, setTypeButton5] = useState("default");
-  const [typeButton6, setTypeButton6] = useState("default");
+  //const [typeButton6, setTypeButton6] = useState("default");
 
   useEffect(() => {
     let session = parseFloat((time/selected).toFixed(2));
@@ -35,24 +34,24 @@ const App:FunctionComponent = () => {
 
   const setActiveSession = (id:number) => {
     if(id === 1){
-      setTypeButton1("primary"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default"); setTypeButton6("default")
+      setTypeButton1("primary"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default"); //setTypeButton6("default")
       setSelected(2);
     }else if(id === 2){
-      setTypeButton1("default"); setTypeButton2("primary"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default"); setTypeButton6("default")
+      setTypeButton1("default"); setTypeButton2("primary"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default"); //setTypeButton6("default")
       setSelected(3);
     }else if(id === 3){
-      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("primary"); setTypeButton4("default"); setTypeButton5("default"); setTypeButton6("default")
+      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("primary"); setTypeButton4("default"); setTypeButton5("default"); //setTypeButton6("default")
       setSelected(4);
     }else if(id === 4){
-      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("primary"); setTypeButton5("default"); setTypeButton6("default")
+      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("primary"); setTypeButton5("default"); //setTypeButton6("default")
       setSelected(6);
     }else if(id === 5){
-      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("primary"); setTypeButton6("default")
+      setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("primary"); //setTypeButton6("default")
       setSelected(8);
-    }else if(id === 6){
+    }/*else if(id === 6){
       setTypeButton1("default"); setTypeButton2("default"); setTypeButton3("default"); setTypeButton4("default"); setTypeButton5("default"); setTypeButton6("primary")
       setSelected(12);
-    }
+    }*/
   }
 
   const timeInformation = () => {
@@ -84,6 +83,32 @@ const App:FunctionComponent = () => {
     }
   }
 
+  const textFormatter = (text:string) => {
+    let textToReturn = ""
+    if(text === "season"){
+      if(seasonNumber > 1){
+        textToReturn = seasonNumber + " saisons";
+      }else{
+        textToReturn = seasonNumber + " saison";
+      }
+    }
+    else if(text === "episode"){
+      if(episodeNumber > 1){
+        textToReturn = episodeNumber + " épisodes";
+      }else{
+        textToReturn = episodeNumber + " épisode";
+      }
+    }
+    else if(text === "runtime"){
+      if(episodeNumber > 1){
+        textToReturn = runTime + " minutes par épisode";
+      }else{
+        textToReturn = runTime + " minute par épisode";
+      }
+    }
+    return textToReturn;
+  }
+
   return (
     <div className="App">
       <Navbar setMenuVisibility={setMenuVisibility} />
@@ -102,25 +127,27 @@ const App:FunctionComponent = () => {
               <Button type={typeButton3 as ButtonType} onClick={() => setActiveSession(3)}>4h</Button>&nbsp;&nbsp;
               <Button type={typeButton4 as ButtonType} onClick={() => setActiveSession(4)}>6h</Button>&nbsp;&nbsp;
               <Button type={typeButton5 as ButtonType} onClick={() => setActiveSession(5)}>8h</Button>&nbsp;&nbsp;
-              <Button type={typeButton6 as ButtonType} onClick={() => setActiveSession(6)}>12h</Button>&nbsp;&nbsp;
+              {/*<Button type={typeButton6 as ButtonType} onClick={() => setActiveSession(6)}>12h</Button>&nbsp;&nbsp;*/}
             </div>
             <br/>
-            <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
-            <div className="tags-group">
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()}</Tag>
-              <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{timeInformation()}</Tag>
+            <div style={{marginTop: "-10px"}}>
+              <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
+              <div className="tags-group">
+                <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()}</Tag>
+                <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{timeInformation()}</Tag>
+              </div>
             </div>
           </div>
         </TabPane>
         <TabPane tab="Informations" key="2">
           <div className="container-timeline">
             <Timeline>
-              <Timeline.Item>Note : 0.0 <StarTwoTone /></Timeline.Item>
               <Timeline.Item>Statut : {status}</Timeline.Item>
-              <Timeline.Item>{episodeNumber} épisode(s) de {runTime} minutes ({seasonNumber} saison(s))</Timeline.Item>
+              <Timeline.Item>{textFormatter("season")}</Timeline.Item>
+              <Timeline.Item>{textFormatter("episode")}</Timeline.Item>
+              <Timeline.Item>{textFormatter("runtime")}</Timeline.Item>
             </Timeline>
           </div>
-          <div style={{marginTop: "-35px"}}><Button>Description</Button></div>
         </TabPane>
       </Tabs>
     </div>

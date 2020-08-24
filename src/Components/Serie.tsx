@@ -1,6 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { Tag, Button } from 'antd';
-import { StarTwoTone } from '@ant-design/icons';
 
 interface ISerie {
   id: number,
@@ -36,7 +34,7 @@ const Serie:FunctionComponent<ISerie> = (props) => {
 
   const setStatus = (status:string) => {
     let text = "";
-    if(status == "Returning Series"){text = "en cours"}
+    if(status === "Returning Series"){text = "en cours"}
     else{text="terminée"}
     props.setStatus(text);
   }
@@ -52,7 +50,6 @@ const Serie:FunctionComponent<ISerie> = (props) => {
         let movie = document.getElementsByClassName("poster") as HTMLCollectionOf<HTMLElement>;
         for(let i = 0; i < movie.length; i++){
           if(movie[i].id === dynamicId){
-            console.log(data);
             document.getElementById(dynamicId)!.style.boxShadow = "0 0 1pt 2pt #1890FF";
             props.setTime(parseFloat(((runtime * episode)/60).toFixed(2)));
             props.setSeasonNumber(data.number_of_seasons);
@@ -66,19 +63,18 @@ const Serie:FunctionComponent<ISerie> = (props) => {
       });
   }
 
-  const addToSideMenu = (id:number, title:string) => {
+  /*const addToSideMenu = (id:number, title:string) => {
     let url = 'https://api.themoviedb.org/3/tv/'+id+'?api_key=cfe422613b250f702980a3bbf9e90716&language=fr';
     fetch (url)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         let runtime = data.episode_run_time[0];
         let episode = data.number_of_episodes;
         let time = (runtime * episode)/60;
         let INotificationData : INotificationData = {title,time};
         props.addToSideMenu(INotificationData);  
       })
-  }
+  }*/
 
   return (
     <div className="serie" onClick={() => getDatas(props.id)}>

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { Drawer, Button, Divider, Tag } from 'antd';
+import { Drawer, Divider, Tag } from 'antd';
 
 interface ISideMenu {
   visibility: boolean,
@@ -8,7 +8,7 @@ interface ISideMenu {
 
 const SideMenu: FunctionComponent<ISideMenu> = (props) => {
   const [visibility,setVisibility] = useState(false);
-  const [data, setData] = useState([] as string[]);
+  //const [data, setData] = useState([] as string[]);
   
   const openMenu = () => {setVisibility(true);}
 
@@ -18,9 +18,7 @@ const SideMenu: FunctionComponent<ISideMenu> = (props) => {
     if(props.visibility === true){openMenu()}
   });
 
-  const deleteItem = (item:number) => {
-
-  }
+  //const deleteItem = (item:number) => {}
 
   const returnData = () => {
     let htmlToReturn:any = [];

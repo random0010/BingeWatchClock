@@ -13,9 +13,9 @@ const Navbar: FunctionComponent<INavbar> = (props) => {
   return (
     <>
       <Menu selectedKeys={[activeMenuItem]} mode="horizontal">
-        <Menu.Item key="burger" onClick={() => {props.setMenuVisibility(true)}}>
+        {/*<Menu.Item key="burger" onClick={() => {props.setMenuVisibility(true)}}>
           <i className="fas fa-bars"></i>
-        </Menu.Item>
+        </Menu.Item>*/}
         <Menu.Item key="app" onClick={() => {setModalVisibility(true)}}>
           <i className="fas fa-stopwatch"></i>
           &nbsp;&nbsp;<b>BingeWatchClock</b>
