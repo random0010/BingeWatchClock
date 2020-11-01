@@ -110,6 +110,10 @@ img{
   flex-direction: column;
 }
 
+.container-information{
+  margin-top: -5px;
+}
+
 .app-name{
   text-align: center;
   color: #1890FF;
