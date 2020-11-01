@@ -114,7 +114,7 @@ const App:FunctionComponent = () => {
       <Navbar setMenuVisibility={setMenuVisibility} />
       <SideMenu visibility={menuVisibility} setMenuVisibility={setMenuVisibility} />
       <br/>
-      <p>Cliquer sur une série pour commencer...</p>
+      <p className="instruction">Cliquer sur une série pour commencer...</p>
       <SerieBrowser setTime={setTime} setSeasonNumber={setSeasonNumber} setEpisodeNumber={setEpisodeNumber} setRunTime={setRunTime} setStatus={setStatus}/>
       
       <Tabs defaultActiveKey="1" type="card">
