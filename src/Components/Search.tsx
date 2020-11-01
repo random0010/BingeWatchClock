@@ -11,7 +11,7 @@ const { Search } = Input;
 const SearchInput: FunctionComponent<InputProps> = (props) => (
   <Search
     placeholder="Rechercher..."
-    style={{ width: 300 }}
+    style={{ width: 300, marginTop: "-5px" }}
     value={props.query}
     onChange={event => props.onInput(event.target.value)}
   />
