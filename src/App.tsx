@@ -119,7 +119,7 @@ const App:FunctionComponent = () => {
       
       <Tabs defaultActiveKey="1" type="card">
         <TabPane tab="Temps de visionnage" key="1">
-          <div className="container-information" style={{marginTop: "-2.5px"}}>
+          <div className="container-information">
             <p>Diviser le temps en sessions</p>
             <div className="buttons-group">
               <Button type={typeButton1 as ButtonType} onClick={() => setActiveSession(1)}>2h</Button>&nbsp;&nbsp;
@@ -130,7 +130,7 @@ const App:FunctionComponent = () => {
               {/*<Button type={typeButton6 as ButtonType} onClick={() => setActiveSession(6)}>12h</Button>&nbsp;&nbsp;*/}
             </div>
             <br/>
-            <div style={{marginTop: "-13px"}}>
+            <div style={{marginTop: "-10px"}}>
               <Tag color="#108ee9" style={{padding:"8px 8px 8px 8px"}}>{sessionInformation()} session(s) de {selected}h</Tag>
               <div className="tags-group">
                 <Tag color="geekblue" style={{padding:"8px 8px 8px 8px", marginTop:"10px", marginBottom:"5px"}}>{convertToDayHourMin()}</Tag>
